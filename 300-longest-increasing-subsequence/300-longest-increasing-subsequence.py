@@ -9,15 +9,16 @@ class Solution:
             )
         Base :  dp(0) = 1
         Topological order : n, n-1, .. , 0
-        Time : O(n) * O(1)
+        Time :
         """
         n = len(nums)
         @cache
         def dp(i = n - 1):
+            
             if i == 0:
                 return 1
             return max([dp(j) for j in range (i) if nums[j] < nums[i]], default=0) + 1
-        return max(dp(i) 
-                   for i in range(len(nums)))
+        
+        return max(dp(i)  for i in range(len(nums)))
                     
         
