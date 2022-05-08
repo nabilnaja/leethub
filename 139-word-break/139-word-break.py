@@ -3,13 +3,12 @@ class Solution:
         n = len(s)
         @cache
         def dp(i = 0):
-            if i >= n:
+            if i == n:
                 return True
             r = n - i
-            result = False
             for word in wordDict:
-                if len(word) <= r and word == s[i: i + len(word)]:
-                    result = result or dp(i + len(word))
-            return result
+                if len(word) <= r and word == s[i: i + len(word)] and  dp(i + len(word)):
+                    return True
+            return False
         return dp()
                     
