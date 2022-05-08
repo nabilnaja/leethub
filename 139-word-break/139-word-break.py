@@ -5,9 +5,8 @@ class Solution:
         def dp(i = 0):
             if i == n:
                 return True
-            r = n - i
-            for word in wordDict:
-                if len(word) <= r and word == s[i: i + len(word)] and  dp(i + len(word)):
+            for end in range(i + 1, len(s) + 1):
+                if s[i:end] in wordDict and dp(end):
                     return True
             return False
         return dp()
