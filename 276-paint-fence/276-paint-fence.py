@@ -3,7 +3,7 @@ class Solution:
         """
         Sub problems : dp(i) represent the number of ways we can paint the fence 0 to i
         Original problem : dp(n) 
-        Relate : dp(i) = 
+        Relate : dp(i) = (k - 1) * (dp(i - 1) + dp(i - 2))
         Base :  i == 1 : k
                 i == 2 : k * k
                 i == 0 : 0
