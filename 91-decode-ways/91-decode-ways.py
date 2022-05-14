@@ -38,6 +38,19 @@ class Solution:
                     memo[i] = memo[i+2] + result if is_valid_iter(s[i : i + 2]) else result
             return memo[0]
         
+        def dp():
+            
+            one_ahead = 1 if s[n-1] != '0' else 0
+            two_ahead = 1 
+            
+            for i in range(n - 2, -1, -1):
+                current = 0
+                if s[i] != '0':
+                    current = two_ahead + one_ahead if is_valid_iter(s[i : i + 2]) else one_ahead
+                one_ahead, two_ahead = current , one_ahead
+            
+            return one_ahead
+        
         return dp()
             
         
