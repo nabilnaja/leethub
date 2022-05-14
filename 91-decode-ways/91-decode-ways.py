@@ -9,26 +9,21 @@ class Solution:
         Time : 
         """
         n = len(s)
+        def is_valid(s):
+            return True if int(s) <= 26 else False
+        
         @cache
         def dp(i = 0):
+            
             if i == n:
                 return 1
-            
             if s[i] == '0':
                 return 0
-            
-            if i == n -1:
+            if i == n - 1:
                 return 1
             
-            count_ways = dp(i+1)
-            
-            if is_valid(s[i:i+2]):
-                 count_ways += dp(i+2)
-            
-            return count_ways
-        
-        def is_valid(s):
-            return True if 0 < int(s) <= 26 else False
+            result = dp(i+1)
+            return dp(i+2) + result if is_valid(s[i : i + 2]) else result
         
         return dp()
             
