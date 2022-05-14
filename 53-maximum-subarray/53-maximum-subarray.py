@@ -1,5 +1,5 @@
 class Solution:
-    def maxSubArray(self, nums):
+    def maxSubArray(self, nums: List[int]) -> int:
         # Initialize our variables using the first element.
         current_subarray = max_subarray = nums[0]
         
