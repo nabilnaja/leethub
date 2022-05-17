@@ -16,9 +16,9 @@ class Solution:
                 return 1     
             if i <= 0:
                 return 0 
-
-          
-            return 1 + min( (i%2) + dp(i//2), (i%3) + dp(i//3) ) 
+            two = (i%2) + dp(i//2)
+            three = (i%3) + dp(i//3)
+            return 1 + min(two, three) 
         
         return dp()
         
