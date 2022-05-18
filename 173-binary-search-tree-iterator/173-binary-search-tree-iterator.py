@@ -8,26 +8,24 @@ class BSTIterator:
 
     def __init__(self, root: Optional[TreeNode]):
         
-        def generate(node) -> int:
+        def inorder_generator(node) -> int:
             if node:
-                yield from generate(node.left)
+                yield from inorder_generator(node.left)
                 yield(node.val)
-                yield from generate(node.right)
+                yield from inorder_generator(node.right)
                 
-        self.generator = generate(root)
-        self.current = next(self.generator, None)
+        self.iterable = inorder_generator(root)
+        self._next = next(self.iterable, None)
         
 
     def next(self) -> int:
-        if not self.hasNext():
-            return None
-        next_value = self.current
-        self.current = next(self.generator, None)
-        return next_value
+        _next = self._next
+        self._next = next(self.iterable, None)
+        return _next
     
     
     def hasNext(self) -> bool:
-        return False if self.current is None else True
+        return self._next is not None
 
 
 # Your BSTIterator object will be instantiated and called as such:
