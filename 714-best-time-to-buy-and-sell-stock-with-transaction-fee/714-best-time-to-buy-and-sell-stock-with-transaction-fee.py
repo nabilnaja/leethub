@@ -26,7 +26,10 @@ class Solution:
         def dp():
             cash, hold = 0, -prices[0]
             for i in range(1, n):
-                cash, hold = max(cash, hold - fee + prices[i]), max(cash - prices[i], hold)
+                # sell or pass
+                cash = max(hold - fee + prices[i] , cash)
+                # buy or pass
+                hold = max(cash - prices[i] , hold)
             return cash
         return dp()
         
