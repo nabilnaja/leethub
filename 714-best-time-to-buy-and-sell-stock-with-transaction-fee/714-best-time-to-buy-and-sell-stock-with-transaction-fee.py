@@ -23,5 +23,10 @@ class Solution:
                 for hold in range(state_numbers):
                     memo[i][hold] = max(memo[i+1][1], memo[i+1][0] - fee + prices[i]) if hold else max(memo[i+1][1] - prices[i], memo[i+1][0])
             return memo[0][0]
+        def dp():
+            cash, hold = 0, -prices[0]
+            for i in range(1, n):
+                cash, hold = max(cash, hold - fee + prices[i]), max(cash - prices[i], hold)
+            return cash
         return dp()
         
