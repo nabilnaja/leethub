@@ -9,10 +9,7 @@ class Solution:
         def helper(root, val):
             if not root: 
                 return True
-            a = helper(root.left, root.val)
-            b = helper(root.right, root.val)
-            if not a or not b:
-                print(a,b)
+            if not all([ helper(root.left, root.val), helper(root.right, root.val)]):
                 return False
             self.count += 1
             return root.val == val
