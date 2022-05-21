@@ -9,6 +9,7 @@ class Solution:
         result = []
         if not root:
             return result
+        """"
         q = deque([root])
         while(q):
             level = []
@@ -22,6 +23,19 @@ class Solution:
             if level :
                 result.append(level)
         return result
+        """
+        def dp(root, level, result):
+            if len(result) == level:
+                result.append([])
+            result[level].append(root.val)
+            if root.left:
+                dp(root.left, level + 1, result)
+            if root.right:
+                dp(root.right, level + 1, result)
+        dp(root,0,result)
+        return result
+                
+            
         
             
         
