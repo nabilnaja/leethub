@@ -9,11 +9,16 @@ class Solution:
         def helper(root, val):
             if not root: 
                 return True
-            if not all([helper(root.left, root.val) , helper(root.right ,root.val)]):
+            a = helper(root.left, root.val)
+            b = helper(root.right, root.val)
+            if not a or not b:
+                print(a,b)
                 return False
             self.count += 1
             return root.val == val
             
+        
+
         if not root:
             return 0
         self.count = 0
