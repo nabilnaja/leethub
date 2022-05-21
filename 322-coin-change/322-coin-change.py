@@ -16,7 +16,6 @@ class Solution:
         amount_size = amount + 1
         memo = [float("inf")] * amount_size
         memo[0] = 0
-
         for coin in coins:
             for x in range(coin, amount_size):
                 memo[x] = min(memo[x], memo[x - coin] + 1)
