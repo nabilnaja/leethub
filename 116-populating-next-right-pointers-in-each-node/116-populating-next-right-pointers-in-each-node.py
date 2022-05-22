@@ -10,10 +10,10 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
-        if not root or not root.left:
+        if not root:
             return root
         q = deque()
-        q.extend([root.left, root.right])
+        q.append(root)
         
         while q:
             last_index = len(q) - 1
