@@ -8,14 +8,6 @@ class Solution:
         Topological order : n , ..., 0
         Time :
         """
-        def is_palindrome(start, end):
-            while start < end:
-                if s[start] != s[end]:
-                    return False
-                start =+ 1
-                end =-  1
-            return True
-            
         @cache    
         def dp(i,j):
             if i == j: 
