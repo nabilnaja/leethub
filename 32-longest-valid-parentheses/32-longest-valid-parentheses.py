@@ -1,17 +1,6 @@
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
         """
-        Sub problems : dp(i,j, count) Longest Valid Parentheses for s[i:j] and count is number of unclosed Parentheses.
-        i , i - 1 .. 0
-        Original problem : dp(n) n is len(s)
-        Relate : dp(i, count) =
-        s[i] is ')' : 
-        s[i] is '('
-        
-        Base :  i = 0 return 0
-                
-        Topological order : amount, ..., 0
-        Time :
         
         """
         n = len(s)
