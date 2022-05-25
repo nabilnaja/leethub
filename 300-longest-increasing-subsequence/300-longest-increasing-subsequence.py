@@ -10,24 +10,25 @@ class Solution:
         Base :  dp(0) = 1
         Topological order : n, n-1, .. , 0
         Time :
-        """
+        
         n = len(nums)
-        @cache
-        def dp(i = n - 1):
-            
-            if i == 0:
-                return 1
-            return max([dp(j) for j in range (i) if nums[j] < nums[i]], default=0) + 1
-        
-        
-        def dp():
-            memo = [1] * n
-            for i in range(1, n):
-                memo[i] = max([memo[j] for j in range(i) if nums[j] < nums[i]], default = 0) + 1
+        memo = [1] * n
+        for i in range(1, n):
+            memo[i] = max([memo[j] for j in range(i) if nums[j] < nums[i]], default = 0) + 1
                     
-            return max(memo)      
-        return dp()
-        #return max(dp(i)  for i in range(len(nums)))
+        return max(memo) 
+        """
+        sub = []
+        for num in nums:
+            i = bisect_left(sub, num)
+
+            if i == len(sub):
+                sub.append(num)
+            
+            else:
+                sub[i] = num
+        
+        return len(sub)
     
                     
         
