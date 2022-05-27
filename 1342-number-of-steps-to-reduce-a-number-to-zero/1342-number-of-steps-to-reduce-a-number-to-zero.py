@@ -1,6 +1,7 @@
 class Solution:
     def numberOfSteps(self, num: int) -> int:
-        if num <= 1:
-            return num
-        return self.numberOfSteps(num >> 1) + 1 if num % 2 == 0 else self.numberOfSteps((num -1 ) >> 1) + 2
+        binary = bin(num)[2:]
+        ones = binary.count("1")
+        total = len(binary)
+        return ones + total - 1
         
