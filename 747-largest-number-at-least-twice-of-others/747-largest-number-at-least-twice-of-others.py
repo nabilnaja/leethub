@@ -1,14 +1,13 @@
 class Solution:
     def dominantIndex(self, nums: List[int]) -> int:
-        max_num = (nums[0], 0)
-        is_larger = True
-        for i in range(1, len(nums)):
-            if nums[i] > max_num[0]:
-                is_larger = nums[i] / 2 >= max_num[0]
-                max_num = nums[i], i
-                continue
-            is_larger = is_larger and  max_num[0] / 2 >= nums[i] 
-        return max_num[1] if is_larger else -1
+        max_num = second_max = max_num_index = -1
+        for i in range(0, len(nums)):
+            if nums[i] > max_num:
+                max_num, second_max = nums[i], max_num
+                max_num_index = i
+            elif nums[i] > second_max:
+                second_max = nums[i]
+        return max_num_index if max_num / 2 >= second_max else -1
             
             
                 
