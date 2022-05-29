@@ -3,9 +3,11 @@ class Solution:
         if len(s) != len(t):
             return False
         
-        counts_s = [0] * 26
-        counts_t = [0] * 26
+        counts = [0] * 26
         for i in range(len(s)):
-            counts_s[ord(s[i]) - ord('a')] += 1
-            counts_t[ord(t[i]) - ord('a')] += 1
-        return counts_s == counts_t
+            counts[ord(s[i]) - ord('a')] += 1
+            counts[ord(t[i]) - ord('a')] -= 1
+        for count in counts:
+            if count != 0:
+                return False
+        return True
