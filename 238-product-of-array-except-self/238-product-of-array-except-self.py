@@ -10,8 +10,7 @@ class Solution:
             result[i] = nums[pre] * result[pre]
         right = 1
         for i in range(len(nums) - 2, -1, -1):
-            next_item = i + 1
-            right *= nums[next_item] 
+            right *= nums[i+1] 
             result[i] = right * result[i]
             
         return result
