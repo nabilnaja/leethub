@@ -1,7 +1,9 @@
 class Codec:
     max_size = 3
     def encode(self, strs: List[str]) -> str:
-        """Encodes a list of strings to a single string.
+        """
+        Time complexity: O(n * k).  n is the numberof strings and k the length of the longuest one
+        Space complexity:  O(n * k)
         """
         encoded = []
         for word in strs:
@@ -11,7 +13,9 @@ class Codec:
         
 
     def decode(self, s: str) -> List[str]:
-        """Decodes a single string to a list of strings.
+        """
+        Time complexity: O(n)
+        Space complexity:  O(n)
         """
         if not s: 
             return []
