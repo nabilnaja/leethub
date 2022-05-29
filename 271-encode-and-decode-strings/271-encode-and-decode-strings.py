@@ -21,10 +21,7 @@ class Codec:
         while i < len(s):
             word_index = i + Codec.max_size
             word_size = int(s[i:word_index])
-            if word_size == 0:
-                decoded.append('')
-                i += Codec.max_size 
-                continue
+
             word_end = word_size + word_index
             decoded.append(s[word_index: word_end])
             i = word_end
