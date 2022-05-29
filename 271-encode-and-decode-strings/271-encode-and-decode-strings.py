@@ -7,7 +7,7 @@ class Codec:
         """
         encoded = []
         for word in strs:
-            encoded.extend([f"{len(word):03d}", word])
+            encoded.extend([f"{len(word):0{Codec.max_size}d}", word])
         return ''.join(encoded)
             
         
