@@ -1,6 +1,6 @@
 class Solution:
     def longestConsecutive(self, nums):
-        longest_streak = 0
+        best = 0
         num_set = set(nums)
 
         for num in num_set:
@@ -12,6 +12,6 @@ class Solution:
                     current_num += 1
                     current_streak += 1
 
-                longest_streak = max(longest_streak, current_streak)
+                best = max(best, current_streak)
 
-        return longest_streak
+        return best
