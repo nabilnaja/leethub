@@ -4,11 +4,11 @@ class Solution:
         Time complexity: O(n log n) 
         Space complexity:  O(n)         
         """
-        pair = [[p, s] for p, s in zip(position, speed)]
+        pair = sorted([(p, (target - p)/s) for p,s in zip(position, speed)])
         stack = []
-        for p, s in sorted(pair, reverse = True):
-            stack.append((target - p) / s)
-            if len(stack) >= 2 and stack[-1] <= stack[-2]:
+        for item in pair:
+            while stack and stack[-1] <= item[1]:
                 stack.pop()
+            stack.append(item[1])
         return len(stack) 
         
