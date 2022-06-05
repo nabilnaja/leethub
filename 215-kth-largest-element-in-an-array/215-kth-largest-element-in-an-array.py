@@ -4,20 +4,18 @@ class Solution:
         Time complexity: O(n log k) 
         Space complexity:  O(k)        
         """
-        """
         heap = nums[:k]
         heapq.heapify(heap)
         for i in range(k, len(nums)):
             heappushpop(heap,nums[i])
         return heap[0]
         """
-        """
         return heapq.nlargest(k, nums)[-1]
         """
         """
         Time complexity: O(n) in the average case. O(n**2) in the worst case
         Space complexity:  O(1)        
-        """
+        
         def partition(left, right, pivot_index):
             
             pivot = nums[pivot_index]
@@ -55,6 +53,7 @@ class Solution:
                 return select(pivot_index + 1, right, k_smallest)
 
         return select(0, len(nums) - 1, len(nums) - k)
+        """
         
         
         
