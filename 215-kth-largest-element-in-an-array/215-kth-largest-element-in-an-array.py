@@ -15,8 +15,8 @@ class Solution:
         return heapq.nlargest(k, nums)[-1]
         """
         """
-        Time complexity: O(n log k) 
-        Space complexity:  O(k)        
+        Time complexity: O(n) in the average case. O(n**2) in the worst case
+        Space complexity:  O(1)        
         """
         def partition(left, right, pivot_index):
             
