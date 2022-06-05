@@ -4,10 +4,13 @@ class Solution:
         Time complexity: O(n log k) 
         Space complexity:  O(k)        
         """
+        """
         heap = nums[:k]
         heapq.heapify(heap)
         for i in range(k, len(nums)):
             heappushpop(heap,nums[i])
         return heap[0]
-                
+        """      
+        
+        return heapq.nlargest(k, nums)[-1]
         
