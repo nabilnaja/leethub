@@ -9,17 +9,19 @@ class KthLargest:
             self.heap = nums[:k]
             heapq.heapify(self.heap)
             for i in range(k, len(nums)):
-                if nums[i] > self.heap[0]:
-                    heapq.heapreplace(self.heap, nums[i])
+                self.replace(nums[i])
                 
             
     def add(self, val: int) -> int:
         if len(self.heap) < self.k:
             heapq.heappush(self.heap, val)
         else:
-            if val > self.heap[0]:
-                    heapq.heapreplace(self.heap, val)
+            self.replace(val)
         return self.heap[0]
+    
+    def replace(self, val):
+        if val > self.heap[0]:
+                    heapq.heapreplace(self.heap, val)
 
 
 # Your KthLargest object will be instantiated and called as such:
