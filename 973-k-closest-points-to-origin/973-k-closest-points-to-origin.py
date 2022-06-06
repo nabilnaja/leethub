@@ -4,8 +4,7 @@ class Solution:
         Time complexity: O(n log k) 
         Space complexity:  O(k)        
         """
-        distances = {(x,y) : math.sqrt(x**2 + y**2) for x,y in points}
-        points = [(x,y) for x,y in points]
-        nsmallest = heapq.nsmallest(k, points, key = distances.get)
-        return [[x,y ]for x , y in nsmallest]
+        heap = [(math.sqrt(i[0]**2 + i[1]**2), i) for i in points]
+        nsmallest = heapq.nsmallest(k, heap)
+        return [i[1] for i in nsmallest]
         
