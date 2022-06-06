@@ -21,7 +21,7 @@ class Twitter:
         res = []
         for user in users:
             if len(self.tweets[user]) > 0:
-                tweets.extend(self.tweets[user])
+                tweets.extend(self.tweets[user][-self.feed_limit:])
         return [tweet[1] for tweet in heapq.nlargest(self.feed_limit, tweets)]
 
     def follow(self, followerId: int, followeeId: int) -> None:
