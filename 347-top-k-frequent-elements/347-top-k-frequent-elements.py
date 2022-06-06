@@ -11,8 +11,6 @@ class Solution:
             return nums
         
         counter = Counter(nums)
-        return heapq.nlargest(k, counter.keys(), key=counter.get)
-        
         """
         """
         Time complexity: O(n) 
@@ -24,13 +22,12 @@ class Solution:
             return nums
         counter = Counter(nums)
         bucket = [[] for _ in range(len(nums) + 1)]
+        res = []
         for n, c in counter.items():
             bucket[c].append(n)
-        result = [] 
-        for i in range(len(bucket) - 1, -1, -1):
+        for i in range(len(bucket) - 1,-1,-1):
             for num in bucket[i]:
-                result.append(num)
-                if len(result) == k:
-                    return result
-        
-        
+                res.append(num)
+                if len(res) == k:
+                    return res
+                
