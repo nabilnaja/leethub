@@ -1,9 +1,9 @@
 class Twitter:
-    """
-    Time complexity: 
-    Space complexity:    
-    """
+    
     def __init__(self):
+        """
+        Time complexity: O(1) 
+        """
         self.follows = defaultdict(set)
         self.tweets = defaultdict(list)
         self.timestamp = 0
@@ -11,10 +11,19 @@ class Twitter:
         
 
     def postTweet(self, userId: int, tweetId: int) -> None:
+        """
+        Time complexity: O(1) 
+        """
         self.tweets[userId].append((self.timestamp, tweetId))
         self.timestamp += 1
 
     def getNewsFeed(self, userId: int) -> List[int]:
+        """
+        K is the number of followees
+        k * 10 is the number of tweet we fetch
+        Time complexity: O(KlogK)
+        Space complexity - O (k)
+        """
         users = self.follows[userId]    
         users.add(userId)
         tweets = []
@@ -25,10 +34,16 @@ class Twitter:
         return [tweet[1] for tweet in heapq.nlargest(self.feed_limit, tweets)]
 
     def follow(self, followerId: int, followeeId: int) -> None:
+        """
+        Time complexity: O(1) 
+        """
         self.follows[followerId].add(followeeId)
         
 
     def unfollow(self, followerId: int, followeeId: int) -> None:
+        """
+        Time complexity: O(1) 
+        """
         if followeeId in self.follows[followerId]:
             self.follows[followerId].remove(followeeId)
 
