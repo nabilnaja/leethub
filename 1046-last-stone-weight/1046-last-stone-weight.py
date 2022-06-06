@@ -2,15 +2,15 @@ class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         """
         Time complexity: O(nlogn) 
-        Space complexity:  O(n)         
+        Space complexity:  O(1)         
         """
-        negative_stones = [-x for x in stones]
-        heapq.heapify(negative_stones)
-        while len(negative_stones) > 1:
-            first, second = heapq.heappop(negative_stones), heapq.heappop(negative_stones)
+        for i in range(len(stones)):
+            stones[i] *= -1
+        heapq.heapify(stones)
+        while len(stones) > 1:
+            first, second = heapq.heappop(stones), heapq.heappop(stones)
             if first != second:
-                new_weight = first - second
-                heapq.heappush(negative_stones, new_weight)
+                heapq.heappush(stones, first - second)
             
-        return -negative_stones[0] if negative_stones else 0
+        return -stones[0] if stones else 0
         
