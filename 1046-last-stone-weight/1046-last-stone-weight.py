@@ -9,7 +9,7 @@ class Solution:
         while len(negative_stones) > 1:
             first, second = heapq.heappop(negative_stones), heapq.heappop(negative_stones)
             if first != second:
-                new_weight = first - second if first < second else second - first
+                new_weight = first - second
                 heapq.heappush(negative_stones, new_weight)
             
         return -negative_stones[0] if negative_stones else 0
