@@ -1,5 +1,9 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
+        """
+        Time complexity: O(n)  
+        Space complexity:  O(1)        
+        """
         l, r = 0, len(height) - 1
         best_size = 0
         while l < r:
@@ -7,6 +11,6 @@ class Solution:
             best_size = max(current_size, best_size)
             if height[l] >= height[r]:
                 r -= 1
-            elif height[l] < height[r]:
+            else:
                 l += 1
         return best_size
