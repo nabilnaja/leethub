@@ -2,7 +2,7 @@ class Solution:
     def trap(self, height: List[int]) -> int:
         """
         Time complexity: O(n)  
-        Space complexity:  O(1)        
+        Space complexity:  O(n)        
         """
         max_left = [height[0] for _ in range(len(height))] 
         max_right = [height[len(height) - 1] for _ in range(len(height))]
