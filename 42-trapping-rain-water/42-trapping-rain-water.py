@@ -2,28 +2,24 @@ class Solution:
     def trap(self, height: List[int]) -> int:
         """
         Time complexity: O(n)  
-        Space complexity:  O(n)        
+        Space complexity:  O(1)        
         """
-        max_left = [height[0] for _ in range(len(height))] 
-        max_right = [height[len(height) - 1] for _ in range(len(height))]
-        
-        for i in range(1, len(height)):
-            max_left[i] = max(height[i], max_left[i - 1])
-        for i in range(len(height) -2 ,-1, -1 ):
-            max_right[i] = max(height[i], max_right[i + 1])   
-        
+        max_left, max_right= height[0], height[len(height) - 1]
+        l, r = 0, len(height) - 1
         water_volume = 0
-        for i in range(1, len(height) - 1):
-            current_volume = min(max_left[i], max_right[i]) - height[i]
+        while l < r:
+            if max_left < max_right:
+                l += 1
+                current_volume = max_left - height[l]
+                max_left = max(max_left, height[l])
+            else:
+                r -= 1
+                current_volume = max_right - height[r]
+                max_right = max(max_right, height[r])
             if current_volume > 0:
                 water_volume += current_volume
         return water_volume
-            
-        
-                    
                 
-            
-            
             
             
         
