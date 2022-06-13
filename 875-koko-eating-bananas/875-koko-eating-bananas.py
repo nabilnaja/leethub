@@ -1,7 +1,7 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         """
-        Time complexity: O(log n * m)  
+        Time complexity: O( m * log n) -> m : max(piles), n : the size of piles  
         Space complexity:  O(1)        
         """
         l, r = 1, max(piles)
