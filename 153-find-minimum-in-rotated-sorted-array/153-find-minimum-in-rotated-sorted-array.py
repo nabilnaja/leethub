@@ -11,8 +11,7 @@ class Solution:
         
         if nums[l] < nums[r]:
                 return nums[l]
-        
-            
+           
         while l <= r:
             
             mid = l + (r - l) // 2
