@@ -1,7 +1,6 @@
 class TimeMap:
     """
-    Time complexity: O(log n)  
-    Space complexity:  O(1)        
+    Time complexity: get -> O(log n), set -> O(1)  
     """
     def __init__(self):
         self.dt = defaultdict(list)
