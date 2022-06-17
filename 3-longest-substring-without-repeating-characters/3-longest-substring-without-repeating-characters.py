@@ -2,22 +2,22 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         """
         Time complexity: O(n)
-        Space complexity:  O(n)
+        Space complexity:  O(1)
         """
-        visited_letters = {}
-        j = 0
-        i = 0
+        chars = [None] * 128
+        
+        r = l = 0
         res = 0
-        while j < len(s):
-            if s[j] in visited_letters:
-                res = max(res, j - i)
-                i = j = visited_letters[s[j]] + 1
-                visited_letters = {}
-            else:
-                visited_letters[s[j]] = j
-                j += 1
-        else: 
-            res = max(res, j - i)
+        
+        while r < len(s):
+            
+            ch = s[r]
+            index = chars[ord(ch)]
+            if index != None and index >= l and index < r:
+                l = index + 1
+            res = max(res, r - l + 1)
+            chars[ord(ch)] = r
+            r += 1
         return res
             
         
