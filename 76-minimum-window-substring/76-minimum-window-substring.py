@@ -1,5 +1,10 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
+        """
+        Time complexity: O(n)
+        Space complexity:  O(1)
+        """
+        
         if len(s) < len(t):
             return ''
 
@@ -8,6 +13,7 @@ class Solution:
 
         criteria = 0
         valid_criteria = 0
+        
         res = [0, float('inf')]
 
         for i in range(len(t)):
@@ -23,7 +29,7 @@ class Solution:
             if t_count[ch_r] and s_count[ch_r] == t_count[ch_r]:
                 valid_criteria += 1
 
-            while valid_criteria == criteria and l <= r:
+            while valid_criteria == criteria:
                 res = res if r - l >= res[1] - res[0] else [l, r]
 
                 ch_l = ord(s[l]) - ord_a
