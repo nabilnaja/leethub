@@ -1,5 +1,10 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
+        """
+        Time complexity: O(n)
+        Space complexity:  O(1)
+        """
+        
         if len(s2) < len(s1):
             return False
 
@@ -20,18 +25,19 @@ class Solution:
 
         for r in range(len(s1), len(s2)):
 
-            if s2_count == s1_count:
+            if valid_criteria_number == criteria_number:
                 return True
 
             ch_l, ch_r = ord(s2[l]) - ord_a, ord(s2[r]) - ord_a
 
             s2_count[ch_r] += 1
-            s2_count[ch_l] -= 1
 
             if s2_count[ch_r] == s1_count[ch_r]:
                 valid_criteria_number += 1
             elif s2_count[ch_r] == s1_count[ch_r] + 1:
                 valid_criteria_number -= 1
+
+            s2_count[ch_l] -= 1
 
             if s2_count[ch_l] == s1_count[ch_l]:
                 valid_criteria_number += 1
@@ -39,4 +45,4 @@ class Solution:
                 valid_criteria_number -= 1
             l += 1
 
-        return s2_count == s1_count
+        return valid_criteria_number == criteria_number
