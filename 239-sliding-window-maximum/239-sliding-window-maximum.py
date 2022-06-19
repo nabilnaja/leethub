@@ -1,8 +1,8 @@
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         """
-        Time complexity:
-        Space complexity: 
+        Time complexity: O(n)
+        Space complexity: O(k), the deque size. The size of res is not counted
         """
         if len(nums) * k == 0:
             return []
