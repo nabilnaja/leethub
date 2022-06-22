@@ -5,14 +5,16 @@
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        """
+        Time complexity: O(n)  
+        Space complexity:  O(n)        
+        """
         if not head or not head.next:
             return head
-        last = self.reverseList(head.next)
+        tail = self.reverseList(head.next)
 
-        next_node = head.next      
-        next_node.next = head
+        head.next.next = head
         head.next = None
-        
-        return last;
+        return tail;
         
         
