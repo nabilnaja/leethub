@@ -6,25 +6,33 @@
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
         """
-        Do not return anything, modify head in-place instead.
+        Time complexity: O(n)  
+        Space complexity:  O(n)        
         """
-        stack = []
-        head_copy = head
+        if not head:
+            return head 
         
-        while (head):
-            stack.append(head)
-            head = head.next
+        def reverseLinkedList(head):
+            if not head or not head.next:
+                return head
+            tail = reverseLinkedList(head.next)
+            head.next.next = head
+            head.next = None
+            return tail
+        
+       
+        slow_pointer = fast_pointer = head
             
-        head = head_copy
-        for i in range(len(stack) - 1, (len(stack) // 2) - 1, -1):
-            tail = stack[i]
-            temp = head.next
-            head.next = tail
-            tail.next = temp
-            head = tail.next 
+        while fast_pointer and fast_pointer.next:
+            slow_pointer, fast_pointer = slow_pointer.next, fast_pointer.next.next
             
-        tail.next = None
-            
+        list1, list2 = head, reverseLinkedList(slow_pointer) 
 
-        return head_copy
+        while list2.next:
+            list1.next, list1 = list2, list1.next
+            list2.next, list2 = list1, list2.next
         
+        return head 
+        
+        
+            
