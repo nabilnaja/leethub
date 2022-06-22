@@ -4,6 +4,10 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    """
+        Time complexity: O(n + m)
+        Space complexity:  O(n + m)
+        """
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         if not list1:
             return list2
@@ -16,4 +20,3 @@ class Solution:
             list1.next = self.mergeTwoLists(list1.next, list2)
             return list1
         
-        list1.next = self.mergeTwoLists(list1.next, list2) if list1.val < list2.val else self.mergeTwoLists(list1, list2.next)
