@@ -12,9 +12,8 @@ class Solution:
         if not head or not head.next:
             return head
         tail = self.reverseList(head.next)
-
         head.next.next = head
         head.next = None
-        return tail;
+        return tail
         
         
