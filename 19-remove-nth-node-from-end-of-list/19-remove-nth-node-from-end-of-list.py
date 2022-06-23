@@ -11,16 +11,15 @@ class Solution:
         """
         dummy = ListNode(0)
         dummy.next = head
-        fast_pointer = dummy
-        slow_pointer = dummy
-        
-        for i in range(n + 1):
-            fast_pointer = fast_pointer.next
-                
-        while fast_pointer:
-            fast_pointer = fast_pointer.next
-            slow_pointer = slow_pointer.next
+        fast = dummy
+        for i in range(n+1):
+            fast = fast.next
+        slow = dummy
+        while fast:
+            fast = fast.next
+            slow = slow.next
         else:
-            slow_pointer.next = slow_pointer.next.next 
-                
+            slow.next = slow.next.next
         return dummy.next
+            
+        
