@@ -9,30 +9,24 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if not head:
-            return None
-                
-        node_clones = {None : None}
+        """
+        Time complexity: O(n)  
+        Space complexity:  O(n)        
+        """
+        node_clones = {}
         
-        dummy = Node(0)
-        tail_clone = dummy
-        tail = head
-        while tail:
-            tail_clone.next = Node(tail.val)
-            node_clones[tail] = tail_clone.next
-            tail = tail.next
-            tail_clone = tail_clone.next
-
-        tail_clone = dummy.next
-        tail = head
-        while tail:
-            tail_clone.next = node_clones[tail.next]
-            tail_clone.random = node_clones[tail.random]
-            tail = tail.next
-            tail_clone = tail_clone.next
+        def get_clone(node):
+            if not node:
+                return node
+            if node in node_clones:
+                return node_clones[node]
+            node_clone = Node(node.val)
+            node_clones[node] = node_clone
+            node_clone.next = get_clone(node.next)
+            node_clone.random = get_clone(node.random)
+            return node_clone
             
-
-        return dummy.next  
+        return get_clone(head)  
             
                         
                 
