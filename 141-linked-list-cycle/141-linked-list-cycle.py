@@ -10,18 +10,18 @@ class Solution:
         Time complexity: O(n)
         Space complexity:  O(1)
         """
-        if not head or not head.next:
+        if not head :
             return False
         
-        fast = head
+        fast = head.next
         slow = head
         
-        while fast and fast.next:
-            fast = fast.next.next
+        while slow != fast:
+            if fast is None or fast.next is None:
+                return False
             slow = slow.next
-            if fast == slow:
-                return True
-        return False
+            fast = fast.next.next
+        return True
         
         
         
