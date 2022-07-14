@@ -7,8 +7,8 @@
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         """
-        Time complexity: O(h)  
-        Space complexity:  O(1)        
+        Time complexity: O(n)  
+        Space complexity:  O(n)        
         """
         if not root:
             return []
