@@ -6,6 +6,10 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        """
+        Time complexity: O(n)  
+        Space complexity:  O(n)        
+        """
         current_index = 0
         res = 0
         def find_node(node):
