@@ -12,18 +12,15 @@ class Solution:
         """
         good_node_count = 0
         
-        def count(current, max_value= float('-inf'), previous = None):
+        def count(current, max_value= float('-inf')):
             if not current:
                 return
             nonlocal good_node_count
             
-            if not previous:
+            if current.val >= max_value:
                 good_node_count += 1
-            else:
-                max_value = max(max_value, previous.val)
-                if max_value <= current.val:
-                    good_node_count += 1
-            count(current.left, max_value, current)
-            count(current.right, max_value, current)
+            current_max = max(current.val, max_value)
+            count(current.left, current_max)
+            count(current.right, current_max)
         count(root)
         return good_node_count
