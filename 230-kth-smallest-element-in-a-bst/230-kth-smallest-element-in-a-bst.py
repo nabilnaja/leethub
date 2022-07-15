@@ -7,23 +7,20 @@
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         """
-        Time complexity: O(n)  
-        Space complexity:  O(n)        
+        Time complexity: O(h + k)  
+        Space complexity:  O(h)        
         """
         current_index = 0
-        res = 0
-        def find_node(node):
-            if not node:
-                return
-            find_node(node.left)
-            nonlocal current_index
-            current_index += 1
-            if current_index == k:
-                nonlocal res
-                res = node.val
-                return
-            find_node(node.right)
-        find_node(root)
-        return res
+        stack = []
+        while True:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            k -= 1
+            if k == 0:
+                return root.val
+            root = root.right
+            
         
         
