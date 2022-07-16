@@ -14,14 +14,9 @@ class Solution:
         def validate(node, left = float('-inf'), right = float('inf')):
             if not node:
                 return True
-            
-            if not validate(node.left, left, node.val):
-                return False
-            
             if left >= node.val or right <= node.val:
                 return False
-            
-            return validate(node.right, node.val, right)
+            return validate(node.right, node.val, right) and  validate(node.left, left, node.val)
         return validate(root)
         
         
