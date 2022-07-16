@@ -11,19 +11,17 @@ class Solution:
         Space complexity:  O(h)        
         """
         prev = float('-inf')
-        def validate(node):
+        def validate(node, left = float('-inf'), right = float('inf')):
             if not node:
                 return True
             
-            if not validate(node.left):
+            if not validate(node.left, left, node.val):
                 return False
             
-            nonlocal prev
-            if node.val <= prev:
+            if left >= node.val or right <= node.val:
                 return False
             
-            prev = node.val
-            return validate(node.right)
+            return validate(node.right, node.val, right)
         return validate(root)
         
         
