@@ -6,6 +6,10 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        """
+        Time complexity: O(n)  
+        Space complexity:  O(h)        
+        """
         prev = float('-inf')
         def validate(node):
             if not node:
@@ -13,10 +17,11 @@ class Solution:
             
             if not validate(node.left):
                 return False
+            
             nonlocal prev
-
             if node.val <= prev:
                 return False
+            
             prev = node.val
             return validate(node.right)
         return validate(root)
