@@ -9,16 +9,17 @@ class Solution:
         def helper(in_left, in_right):
             if in_left > in_right:
                 return None
-            nonlocal preorder_index
-            val = preorder[preorder_index]
-            preorder_index += 1
-            in_index = index_map[val]
+            nonlocal pre_index
+            val = preorder[pre_index]
+            pre_index += 1
+            in_index = inorder_map[val]
             node = TreeNode(val)
-            node.left = helper(in_left,in_index - 1)
-            node.right = helper(in_index + 1,in_right)
+            node.left = helper(in_left, in_index - 1)
+            node.right = helper(in_index + 1, in_right)
             return node
             
-        index_map = {val:index for index, val in enumerate(inorder)} 
-        preorder_index = 0
+            
+        inorder_map = { num : i for i, num in enumerate(inorder)}
+        pre_index = 0
+
         return helper(0, len(inorder) - 1)
-        
