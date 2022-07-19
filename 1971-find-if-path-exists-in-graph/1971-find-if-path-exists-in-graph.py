@@ -15,6 +15,8 @@ class Solution:
             node = stack.pop()
             if node == destination :
                 return True
+            if node in visited:
+                continue
             visited.add(node)
-            stack.extend([next_node for next_node  in graph[node] if not next_node in visited])
+            stack.extend([next_node for next_node  in graph[node]])
         return False
