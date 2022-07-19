@@ -18,7 +18,6 @@ class Solution:
             if not current_node:
                 return None
             
-            nonlocal node_cache
             
             if current_node in node_cache:
                 return node_cache[current_node]
