@@ -10,7 +10,6 @@ class Solution:
         Space complexity:  O(k)        
         """
         k = len(lists)
-        index = [ (1,i) for i in range(k)]
         heap = [(lists[i].val, i, lists[i]) for i in range(k) if lists[i]]
         if not heap:
             return None
