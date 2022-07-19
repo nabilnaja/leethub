@@ -13,12 +13,10 @@ class Solution:
         Space complexity:  O(v)        
         """
         node_cache = {}
-        
         def get_node(current_node):
             if not current_node:
                 return None
-            
-            
+
             if current_node in node_cache:
                 return node_cache[current_node]
             
