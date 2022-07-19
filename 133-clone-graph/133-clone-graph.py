@@ -9,33 +9,30 @@ class Node:
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         """
-        Time complexity: O(e + v)  
+        Time complexity: O(v + e)  
         Space complexity:  O(v)        
         """
-        if not node:
-            return node
         node_cache = {}
         
         def get_node(current_node):
+            if not current_node:
+                return None
+            
             nonlocal node_cache
+            
             if current_node in node_cache:
                 return node_cache[current_node]
-            else:
-                node_copy = Node(current_node.val)
-                node_cache[current_node] = node_copy
-                return node_copy
-        visited = set()
-        stack = [node]
-        while stack:
-            current_node = stack.pop()
-            if current_node in visited:
-                continue
-            visited.add(current_node)
-            copy_node = get_node(current_node)
+            
+            node_copy = Node(current_node.val)
+            node_cache[current_node] = node_copy
+            
             for neighbor in current_node.neighbors:
-                stack.append(neighbor)
-                copy_node.neighbors.append(get_node(neighbor))
-        return node_cache[node]
+                node_copy.neighbors.append(get_node(neighbor))
+                
+            
+            return node_copy
+        
+        return get_node(node)
             
             
             
