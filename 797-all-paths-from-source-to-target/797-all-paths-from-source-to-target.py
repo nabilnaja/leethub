@@ -9,8 +9,6 @@ class Solution:
         res = []
         current_route = []
         def dfs(current):
-            if current in visited:
-                return
             current_route.append(current)
             visited.add(current)
             if current == dest:
