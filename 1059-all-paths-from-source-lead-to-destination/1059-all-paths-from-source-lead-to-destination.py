@@ -1,5 +1,9 @@
 class Solution:
     def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        """
+        Time complexity: O(v)  
+        Space complexity:  O(v + e)        
+        """
         adj = defaultdict(list)
         
         for s, d in edges:
