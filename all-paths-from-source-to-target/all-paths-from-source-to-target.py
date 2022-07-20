@@ -1,16 +1,14 @@
 class Solution:
     def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
         """
-        Time complexity: O((v - 1)!)  
-        Space complexity:  O(v**3)        
+        Time complexity: O(2**v * v)  
+        Space complexity:  O(v)        
         """
         dest = len(graph) - 1
         visited = set()
         res = []
         current_route = []
         def dfs(current):
-            if current in visited:
-                return
             current_route.append(current)
             visited.add(current)
             if current == dest:
