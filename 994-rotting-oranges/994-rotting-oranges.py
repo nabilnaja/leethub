@@ -1,5 +1,9 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
+        """
+        Time complexity: O(n * m)  
+        Space complexity:  O(n * m)        
+        """
         m, n = len(grid) - 1, len(grid[0]) - 1
         count = {0: 0, 1: 0, 2: 0}
         moves = [(1, 0), (-1, 0), (0, 1), (0, -1)]
@@ -12,13 +16,14 @@ class Solution:
 
         if count[2] == 0:
             return -1 if count[1] else 0
-        elif not count[1]:
-            return 0
         
         days = 0
         while q:
+            if not count[1]:
+                return days
             days += 1
             for i in range(len(q)):
+                
                 x, y = q.pop()
                 for move_x, move_y in moves:
                     new_x = x + move_x
@@ -29,8 +34,6 @@ class Solution:
                         grid[new_x][new_y] = 2
                         q.appendleft((new_x, new_y))
                         count[1] -= 1
-                        if not count[1]:
-                            return days
         return -1 if count[1] else days
             
         
